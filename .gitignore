@@ -1,0 +1,23 @@
+# Python virtual environment
+.venv/
+*.pyc
+__pycache__/
+pip-log.log
+pip-selfcheck.log
+
+# Node modules (for ems-frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.flaskenv
+
+# Editor and OS specific files
+.DS_Store # macOS
+.vscode/ # VS Code settings
+
+# Common backend specific ignores (if applicable)
+*.sqlite3
+*.db

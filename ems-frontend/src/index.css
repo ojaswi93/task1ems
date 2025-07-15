@@ -1,13 +1,148 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Base Dashboard Layout */
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh; /* Ensure full viewport height */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Sidebar Styles */
+.sidebar {
+  width: 250px; /* Default expanded width for large screens */
+  transition: width 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+  position: sticky; /* Keeps sidebar in place while content scrolls on large screens */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Ensure it takes full viewport height */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+  z-index: 1050; /* Ensure it's above main content */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar.collapsed {
+  width: 70px; /* Collapsed width for large screens */
+}
+
+.sidebar.collapsed .d-none.d-sm-inline {
+  display: none !important; /* Hide text when collapsed */
+}
+
+/* Sidebar Link Styling */
+.sidebar-link {
+  border-radius: 0.375rem; /* Bootstrap's default border-radius */
+  margin-bottom: 0.25rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  color: #fff; /* Default text color for dark sidebar */
+  text-decoration: none; /* Remove underline */
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly stronger hover */
+  color: #fff !important;
+}
+
+.sidebar-link.active-sidebar-link {
+  background-color: #428BCA; /* Primary blue for active link */
+  color: #fff !important;
+}
+
+/* Main Content Area */
+.main-content {
+  flex-grow: 1; /* Allows content to take remaining space */
+  padding: 1.5rem !important; /* Ensure consistent padding, override Bootstrap's default p-4 */
+}
+
+/* Responsive Adjustments for Small Screens (up to 767.98px) */
+@media (max-width: 767.98px) {
+  .sidebar {
+    width: 0; /* Hide sidebar by default on small screens */
+    position: fixed; /* Fixed position on small screens to overlay content */
+    transform: translateX(-100%); /* Initially off-screen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow when open */
+  }
+
+  /* When sidebar is NOT collapsed (i.e., open) */
+  .sidebar:not(.collapsed) {
+    width: 250px; /* Full width when open on small screens */
+    transform: translateX(0); /* Slide into view */
+  }
+
+  /* When sidebar is explicitly collapsed (i.e., hidden) on small screens */
+  .sidebar.collapsed {
+    width: 0; /* Ensure it stays hidden */
+    transform: translateX(-100%); /* Ensure it stays off-screen */
+  }
+
+  .sidebar .d-none.d-sm-inline {
+    display: inline !important; /* Show text when sidebar is open on small screens */
+  }
+
+  /* Ensure main content doesn't get a left margin from a hidden sidebar */
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* Show the toggle button *only* on small screens */
+  .sidebar .sidebar-toggle-button {
+    display: block !important; /* Ensure it's visible */
+    margin-left: auto; /* Push to the right */
+  }
+}
+
+/* Hide toggle button on larger screens */
+@media (min-width: 768px) {
+  .sidebar .sidebar-toggle-button {
+    display: none !important;
+  }
+}
+
+/* Recharts bar fill color consistency */
+.recharts-bar-rectangle {
+  fill: #007bff !important;
+}
+
+
+/* src/App.css or your main CSS file */
+
+/* src/App.css or your main CSS file */
+
+/* Custom Grey Button Styles */
+.btn-custom-grey {
+  background-color: #65798e; /* A light, but definitely grey, background */
+  color: #212529; /* Standard dark text color */
+  border-color: #e9ecef; /* Match border to background */
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out; /* Smooth transition */
+}
+
+.btn-custom-grey:hover {
+  background-color: #475f72; /* Slightly darker grey on hover */
+  border-color: #d3d9df; /* Corresponding darker border */
+  color: #212529; /* Keep text color consistent */
+}
+
+.btn-custom-grey:focus,
+.btn-custom-grey.focus {
+  box-shadow: 0 0 0 0.25rem rgba(222, 226, 230, 0.5); /* Focus outline slightly darker grey */
+}
+
+.btn-custom-grey:active,
+.btn-custom-grey.active {
+  background-color: #496175; /* Active state same as hover */
+  border-color: #d3d9df;
+}
+
+/* Ensure btn-secondary is distinctly darker for comparison */
+.btn-secondary {
+    background-color: #4a5e6e; /* Standard Bootstrap secondary grey */
+    border-color: #4e6274;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #3f5062; /* Darker secondary on hover */
+    border-color: #565e64;
 }

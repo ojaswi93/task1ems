@@ -1,8 +1,8 @@
-// ems-frontend/src/components/AdminSidebar.js (This is already mostly correct based on your "new navbar" code)
+// ems-frontend/src/components/EmployeeSidebar.js
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const AdminSidebar = ({ onLogout }) => {
+const EmployeeSidebar = ({ onLogout }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -11,16 +11,12 @@ const AdminSidebar = ({ onLogout }) => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const handleManageEmployees = () => {
-    navigate("/admin/employees");
-  };
-
-  const handleViewAttendance = () => {
-    navigate("/admin/attendance"); // This is the key navigation for the new page
-  };
-
   const handleGoToDashboard = () => {
-    navigate("/admin/dashboard");
+    navigate("/employee/dashboard");
+  };
+
+  const handleMarkViewAttendance = () => {
+    navigate("/employee/attendance");
   };
 
   return (
@@ -32,7 +28,7 @@ const AdminSidebar = ({ onLogout }) => {
       <div className="d-flex justify-content-between align-items-center mb-3 mb-md-0 me-md-auto">
         <button
           className={`btn btn-link d-flex align-items-center text-white text-decoration-none p-0 ${
-            location.pathname === "/admin/dashboard"
+            location.pathname === "/employee/dashboard"
               ? "active-sidebar-link"
               : ""
           }`}
@@ -40,7 +36,7 @@ const AdminSidebar = ({ onLogout }) => {
           style={{ cursor: "pointer" }}
         >
           <i className="bi bi-speedometer2 me-2 fs-4"></i>
-          <span className="fs-5 d-none d-sm-inline">Admin Panel</span>
+          <span className="fs-5 d-none d-sm-inline">Employee Panel</span>
         </button>
         <button
           className="btn btn-dark sidebar-toggle-button"
@@ -56,29 +52,17 @@ const AdminSidebar = ({ onLogout }) => {
         <li className="nav-item">
           <button
             className={`nav-link text-white sidebar-link ${
-              location.pathname === "/admin/employees"
+              location.pathname === "/employee/attendance"
                 ? "active-sidebar-link"
                 : ""
             }`}
-            onClick={handleManageEmployees}
-          >
-            <i className="bi bi-person-lines-fill me-2"></i>
-            <span className="d-none d-sm-inline">Manage Employees</span>
-          </button>
-        </li>
-        <li>
-          <button
-            className={`nav-link text-white sidebar-link ${
-              location.pathname === "/admin/attendance" // This is the link for the new page
-                ? "active-sidebar-link"
-                : ""
-            }`}
-            onClick={handleViewAttendance}
+            onClick={handleMarkViewAttendance}
           >
             <i className="bi bi-calendar-check-fill me-2"></i>
-            <span className="d-none d-sm-inline">View Attendance</span>
+            <span className="d-none d-sm-inline">Mark/View Attendance</span>
           </button>
         </li>
+        {/* You can add more employee-specific links here if needed */}
       </ul>
       <hr />
       <div>
@@ -91,4 +75,4 @@ const AdminSidebar = ({ onLogout }) => {
   );
 };
 
-export default AdminSidebar;
+export default EmployeeSidebar;

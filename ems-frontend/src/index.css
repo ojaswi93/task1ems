@@ -136,13 +136,22 @@
   border-color: #d3d9df;
 }
 
+#colordd {
+  background-color: #496175;
+  color: white;
+}
+#colordd:hover
+{
+  background-color: #4a5e6e ; /* Standard Bootstrap secondary grey */
+  color: #fff;
+}
 /* Ensure btn-secondary is distinctly darker for comparison */
 .btn-secondary {
-    background-color: #4a5e6e; /* Standard Bootstrap secondary grey */
-    border-color: #4e6274;
+    background-color: #687077; /* Standard Bootstrap secondary grey */
     color: #fff;
 }
 .btn-secondary:hover {
     background-color: #3f5062; /* Darker secondary on hover */
     border-color: #565e64;
 }
+

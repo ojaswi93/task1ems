@@ -125,6 +125,7 @@ function EmployeeList() {
 
         <button
           className="btn btn-custom-grey mb-3" // Stays btn-custom-grey
+          id="colordd"
           onClick={() => {
             resetForm();
             setShowAddForm(!showAddForm);
@@ -159,17 +160,26 @@ function EmployeeList() {
             </div>
             <div className="mt-3">
               {newEmp.id ? (
-                <button className="btn btn-info" onClick={handleUpdate}>
+                <button
+                  className="btn btn-sm btn-secondary ms-1"
+                  onClick={handleUpdate}
+                >
                   Update
                 </button>
               ) : (
-                <button className="btn btn-custom-grey" onClick={handleAdd}>
+                <button
+                  className="btn btn-sm btn-secondary ms-1"
+                  onClick={handleAdd}
+                >
                   {" "}
                   {/* Stays btn-custom-grey */}
                   Submit
                 </button>
               )}
-              <button className="btn btn-secondary ms-2" onClick={resetForm}>
+              <button
+                className="btn btn-sm btn-secondary ms-1"
+                onClick={resetForm}
+              >
                 Clear
               </button>
             </div>
@@ -206,7 +216,7 @@ function EmployeeList() {
                     <td>
                       <div className="btn-group">
                         <button
-                          className="btn btn-sm btn-custom-grey" // Stays btn-custom-grey
+                          className="btn btn-sm btn-secondary ms-1"
                           onClick={() => handleEdit(emp)}
                         >
                           Edit
